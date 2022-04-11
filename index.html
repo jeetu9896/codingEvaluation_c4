@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <style>
+        .header{
+            display: flex;
+            justify-content:space-around;
+            margin-bottom: 20px;
+        }
+        a{
+            text-decoration: none;
+        }
+       
+        .details{
+        
+            /* margin: 0px auto; */
+            width: 20%;
+            height: auto;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        }
+        input{
+            margin: 10px;
+            height: 20px;
+        }
+        select{
+            height: 20px;
+            width: 100px;
+        }
+        button{
+            margin: 10px;
+            width: 150px;
+            height: 200x;
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="header">
+            <a href="index.html"><h1>Home</h1></a>
+            <a href="contact.html"><h1>Contact List</h1></a>
+            <a href="favourties.html"><h1>Favourties</h1></a>
+        </div>
+        <div class="details">
+            <form action="">
+                <h2>
+                    Enter Your Contact Details
+                </h2>
+                <input type="text" name="person_name" id="name" placeholder="Enter Contact name">
+                <br>
+                <input type="number" name="person_number" id="number" placeholder="Enter Moblie Number">
+                <br>
+                <select id="type">
+                    <option value="Select Type">Select Type</option>
+                    <option value="family">Family</option>
+                    <option value="friends">Friends</option>
+                    <option value="other">Others</option>
+                </select>
+                <br>
+                <button onclick="addcontactname()"> Submit</button>
+            </form>
+        </div>
+
+        
+    </div>
+</body>
+<script>
+    var contactList= JSON.parse(localStorage.getItem('contactList')) || [];
+ 
+    function addcontactname() {
+    
+    event.preventDefault();
+    var contactobj = {
+        name: document.querySelector("#name").value,
+        number: document.querySelector("#number").value,
+        type: document.querySelector("#type").value
+    };
+    contactList.push(contactobj);
+    localStorage.setItem('contactList', JSON.stringify(contactList));
+    alert(' Added contact to your contact list successfully');
+}
+    
+</script>
+</html>
